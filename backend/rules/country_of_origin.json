@@ -1,0 +1,14 @@
+{
+  "rule_id": "LMPC-COO-001",
+  "rule_version": "2.0",
+  "active": true,
+  "field": "country_of_origin",
+  "source_citation": "Legal Metrology (Packaged Commodities) Rules, 2011, Rule 6(1)(aa)",
+  "description": "Country of origin, manufacture, or assembly must be declared for imported products.",
+  "applicability": "imported_goods_only",
+  "check_type": "all_present",
+  "pattern": null,
+  "severity_if_fail": "high",
+  "confidence_floor": 0.55,
+  "on_field_missing": "UNCERTAIN"
+}

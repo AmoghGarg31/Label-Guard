@@ -1,0 +1,13 @@
+{
+  "rule_id": "LMPC-NET-001",
+  "rule_version": "3.0",
+  "active": true,
+  "field": "net_quantity",
+  "source_citation": "Legal Metrology (Packaged Commodities) Rules, 2011, Rule 6(1)(c)",
+  "description": "Net quantity must be present with a recognizable standard unit of weight, measure, or count.",
+  "check_type": "presence_and_pattern",
+  "pattern": "^[0-9]+(?:[.,][0-9]+)?\\s*(?:kg|g|mg|l|ml|cl|units?|pcs?)$",
+  "severity_if_fail": "high",
+  "confidence_floor": 0.55,
+  "on_field_missing": "UNCERTAIN"
+}

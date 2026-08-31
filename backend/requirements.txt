@@ -1,0 +1,14 @@
+# Versions validated together on Python 3.12 during the 2026-08-30 recovery audit.
+fastapi==0.141.1
+uvicorn==0.52.4
+pydantic==2.13.5
+python-multipart==0.0.32
+python-dotenv==1.2.3
+reportlab==5.0.1
+pytest==9.1.1
+httpx==0.28.1
+opencv-python-headless==5.0.0.93
+pillow==12.3.0
+pytesseract==0.3.13
+numpy==2.5.2
+google-genai==2.20.0

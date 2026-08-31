@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: labelguard-api
+    runtime: docker
+    region: singapore
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    numInstances: 1
+    envVars:
+      - key: LABELGUARD_DATA_DIR
+        value: /var/data
+      - key: CORS_ORIGINS
+        sync: false
+      - key: UPLOAD_RATE_LIMIT_PER_MINUTE
+        value: "30"
+      - key: GEMINI_ENABLED
+        value: "true"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.7-flash
+      - key: GEMINI_FAST_MODEL
+        value: gemini-3.7-flash
+      - key: GEMINI_QUALITY_MODEL
+        value: gemini-3.1-pro-preview
+      - key: GEMINI_FALLBACK_MODELS
+        value: gemini-3.6-flash,gemini-2.5-flash
+      - key: GEMINI_TIMEOUT_SECONDS
+        value: "45"
+      - key: GEMINI_RATE_LIMIT_PER_MINUTE
+        value: "10"
+      - key: GEMINI_MAX_CONCURRENT_REQUESTS
+        value: "2"
+      - key: GEMINI_MAX_ATTEMPTS_PER_MODEL
+        value: "2"
+      - key: GEMINI_EXPLANATION_ENABLED
+        value: "false"
+    disk:
+      name: labelguard-data
+      mountPath: /var/data
+      sizeGB: 1

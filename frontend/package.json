@@ -1,0 +1,34 @@
+{
+  "name": "labelguard-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint app components lib --max-warnings=0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "next": "15.5.24",
+    "react": "19.1.2",
+    "react-dom": "19.1.2",
+    "tailwind-merge": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.1.11",
+    "@types/react-dom": "^19.1.7",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.35.0",
+    "eslint-config-next": "15.5.24",
+    "postcss": "8.5.26",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.2"
+  },
+  "overrides": {
+    "postcss": "8.5.26"
+  }
+}

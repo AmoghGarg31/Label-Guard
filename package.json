@@ -1,0 +1,17 @@
+{
+  "name": "labelguard",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "typecheck": "npm --prefix frontend run typecheck",
+    "lint": "npm --prefix frontend run lint",
+    "audit:frontend": "npm --prefix frontend audit",
+    "test:backend": "backend\\.venv-codex\\Scripts\\python.exe -m pytest backend/tests -q"
+  },
+  "engines": {
+    "node": ">=20.9"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "rule_id": "LMPC-NAME-001",
+  "rule_version": "1.0",
+  "active": true,
+  "field": "common_or_generic_name",
+  "source_citation": "Legal Metrology (Packaged Commodities) Rules, 2011, Rule 6(1)(b)",
+  "description": "The common or generic name of the packaged commodity must be identifiable.",
+  "check_type": "all_present",
+  "pattern": null,
+  "severity_if_fail": "high",
+  "confidence_floor": 0.55,
+  "on_field_missing": "UNCERTAIN"
+}

@@ -1,0 +1,67 @@
+name: LabelGuard CI
+
+"on":
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: labelguard-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend tests and dependency audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install legacy OCR parser test runtime
+        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-eng
+      - name: Install Python dependencies
+        run: python -m pip install -r requirements.txt pip-audit
+      - name: Run backend tests
+        run: mkdir -p ../tmp && python -m pytest -q --basetemp ../tmp/pytest-ci -p no:cacheprovider
+      - name: Audit Python dependencies
+        run: python -m pip_audit -r requirements.txt
+
+  frontend:
+    name: Frontend typecheck, lint, build, and audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run build
+      - run: npm audit --audit-level=high
+
+  container:
+    name: Backend container build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: backend
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build deployable backend image
+        run: docker build --tag labelguard-api:ci ./backend

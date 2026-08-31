@@ -1,0 +1,13 @@
+{
+  "rule_id": "LMPC-MFR-001",
+  "rule_version": "2.0",
+  "active": true,
+  "field": "responsible_party_name_and_address",
+  "source_citation": "Legal Metrology (Packaged Commodities) Rules, 2011, Rule 6(1)(a)",
+  "description": "A responsible-party name and address pair (manufacturer, packer, importer, or marketer) must be identifiable; role-specific legal applicability may require officer review.",
+  "check_type": "all_present",
+  "pattern": null,
+  "severity_if_fail": "high",
+  "confidence_floor": 0.55,
+  "on_field_missing": "UNCERTAIN"
+}

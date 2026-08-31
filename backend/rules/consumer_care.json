@@ -1,0 +1,13 @@
+{
+  "rule_id": "LMPC-CARE-001",
+  "rule_version": "3.0",
+  "active": true,
+  "field": "consumer_care_contact",
+  "source_citation": "Legal Metrology (Packaged Commodities) Rules, 2011, Rule 6(2)",
+  "description": "Consumer complaint contact details must include a recognizable contact channel.",
+  "check_type": "presence_and_pattern",
+  "pattern": "(?:@|https?://|www\\.|(?:\\+?91|0)?[0-9]{3,5}[\\s-]?[0-9]{5,8}|(?:plot|road|street|sector|district|pin(?:code)?|india).*[0-9]{6}|(?:consumer|care|customercare|complaint|help|feedback|toll\\s*free|manager))",
+  "severity_if_fail": "high",
+  "confidence_floor": 0.55,
+  "on_field_missing": "UNCERTAIN"
+}
